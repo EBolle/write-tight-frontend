@@ -11,8 +11,8 @@ const outputContainer = document.querySelector("#output-container");
 const textArea = document.querySelector("#text-area");
 
 const sentenceDivClasses = ["flex", "space-x-1"];
-const sentenceElementDivClasses = ["flex", "flex-col", "space-y-1"];
-const posClasses = ["text-sm", "text-orange-500"];
+const sentenceElementDivClasses = ["flex", "flex-col", "space-y-1/2"];
+const posClasses = ["text-base", "text-orange-500"];
 
 // Initialize with 0 to get the correct last slice after a keyup event
 const cursorIdxArray = [0];

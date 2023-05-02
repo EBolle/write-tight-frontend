@@ -1,9 +1,13 @@
 ---
-const { title, titleDutch, definition, examples } = Astro.props;
+const { abbreviation, title, titleDutch, definition, examples } = Astro.props;
 ---
 
 <div class="flex flex-col pr-2">
-  <h2 class="text-base text-orange-500">{title} (🇳🇱 {titleDutch})</h2>
+  <div class="flex space-x-1 items-center">
+    <h2 class="text-base text-orange-500 font-semibold">{abbreviation}</h2>
+    <h2 class="text-base text-orange-500">{title}</h2>
+    <span class="text-sm">(🇳🇱 {titleDutch})</span>
+  </div>
   <p class="text-base text-gray-500">{definition}</p>
   <p class="italic text-base text-gray-500">{examples}</p>
 </div>
