@@ -1,5 +1,12 @@
 "use strict;";
 
+async function getPosList(text) {
+  const response = await fetch(`http://localhost:8000/pos/all/${text}`);
+  const data = await response.json();
+
+  return data;
+}
+
 async function isAdverb(word) {
   const response = await fetch(`http://localhost:8000/pos/is-adverb/${word}`);
   const data = await response.json();
@@ -30,4 +37,4 @@ async function lyAdverbs(text) {
 
 const nlpPatterns = [lyAdverbs];
 
-export { lyAdverbs, nlpPatterns };
+export { getPosList, lyAdverbs, nlpPatterns };
