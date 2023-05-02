@@ -12,6 +12,7 @@ const cursorIdxArray = [0];
 textArea.addEventListener("keyup", (event) => {
   if (event.code === "Period" || event.key === "?" || event.key === "!") {
     let newParagraph = document.createElement("p");
+    newParagraph.classList.add("py-2");
     textContainer.append(newParagraph);
 
     cursorIdxArray.push(textArea.selectionStart);
