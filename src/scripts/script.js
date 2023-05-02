@@ -11,7 +11,7 @@ const outputContainer = document.querySelector("#output-container");
 const textArea = document.querySelector("#text-area");
 
 const sentenceDivClasses = ["flex", "space-x-1"];
-const sentenceElementDivClasses = ["flex", "flex-col", "space-y-1/2"];
+const sentenceElementDivClasses = ["flex", "flex-col", "space-y-1"];
 const posClasses = ["text-base", "text-orange-500"];
 
 // Initialize with 0 to get the correct last slice after a keyup event
@@ -23,8 +23,25 @@ textArea.addEventListener("keyup", (event) => {
     let text = textArea.value.slice(cursorIdxArray.at(-2));
 
     getTextPosList(text).then((data) => {
+      // Tag any regular expression to the original full sentence
+      text = data.text.join(" ");
+
+      regexPatterns.forEach(
+        (regex) =>
+          (text = text.replaceAll(
+            regex.pattern,
+            `<span class=${regex.name} title=${regex.description}>$1</span>`
+          ))
+      );
+
+      // The regEx needs further improvement, add the NLP Patterns and then CLEAN THIS CODE please, modules :)
+      text = text.split(/(\s+|<span.+?<\/span>)/);
+      text = text.filter((str) => str != "" && str != " ");
+
+      console.log(text, typeof text);
+
       // Zip text and POS to visually display them on top of each other
-      const textPos = data.text.map(function (value, idx) {
+      const textPos = text.map(function (value, idx) {
         return [value, data.pos[idx]];
       });
 
