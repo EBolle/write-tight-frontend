@@ -1,9 +1,52 @@
 ---
-const { title, definition, examples } = Astro.props;
+import PosCard from "../components/PosCard.astro";
+
+const posArray = [
+  {
+    title: "ADJ: Adjective",
+    titleDutch: "bijvoegelijk naamwoord",
+    definition:
+      "Adjectives are words that typically modify nouns and specify their properties or attributes.",
+    examples: "big, old, green",
+  },
+  {
+    title: "ADV: Adverb",
+    titleDutch: "bijwoord",
+    definition:
+      "Adverbs are words that typically modify verbs for such categories as time, place, direction or manner. They may also modify adjectives and other adverbs.",
+    examples: "very, exactly, well, tomorrow, always",
+  },
+  {
+    title: "DET: Determiner",
+    titleDutch: "determinator",
+    definition:
+      "Determiners are words that modify nouns or noun phrases and express the reference of the noun phrase in context.",
+    examples: "a, an, this, which, any, all, no",
+  },
+  {
+    title: "NOUN",
+    titleDutch: "zelfstandig naamwoord",
+    definition:
+      "Nouns are a part of speech typically denoting a person, place, thing, animal or idea.",
+    examples: "girl, tree, beaty, decision",
+  },
+  {
+    title: "PRON: Pronoun",
+    titleDutch: "voornaamwoord",
+    definition:
+      "Pronouns are words that substitute for nouns or noun phrases, whose meaning is recoverable from the linguistic or extralinguistic context.",
+    examples: "I, you, he, she, who, what, everybody, nobody",
+  },
+];
 ---
 
-<div class="flex flex-col">
-  <h2 class="text-orange-500">{title}</h2>
-  <p class="text-base text-gray-500">{definition}</p>
-  <p class="text-base text-gray-500">Examples are {examples}</p>
-</div>
+{
+  posArray.map((posElement) => (
+    <PosCard
+      title={posElement.title}
+      titleDutch={posElement.titleDutch}
+      definition={posElement.definition}
+      examples={posElement.examples}
+    />
+  ))
+}

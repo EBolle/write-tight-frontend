@@ -1,18 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Pos from "../components/Pos.astro";
-
-const posArray = [
-  {
-    title: "ADJ: Adjective (bijvoegelijk naamwoord)",
-    definition:
-      "Adjectives are words that typically modify nouns and specify their properties or attributes.",
-    examples: "big, old, green",
-  },
-];
 ---
 
-<Layout title="Welcome to write-tight!">
+<Layout title="Welcome to write-tight">
   <main>
     <div
       id="container"
@@ -22,17 +13,13 @@ const posArray = [
         <div class="flex justify-between">
           <div>
             <h2 class="text-lg text-orange-500 font-medium mb-4">
-              POS explanations
+              POS explanations (<a
+                class="text-blue-500 underline px-1"
+                href="https://universaldependencies.org/u/pos/"
+                target="_blank">source</a
+              >)
             </h2>
-            {
-              posArray.map((posElement) => (
-                <Pos
-                  title={posElement.title}
-                  definition={posElement.definition}
-                  examples={posElement.examples}
-                />
-              ))
-            }
+            <Pos />
           </div>
           <div>
             <textarea
