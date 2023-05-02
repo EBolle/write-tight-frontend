@@ -4,10 +4,7 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Welcome to write-tight!">
   <main>
-    <div
-      id="text-container"
-      class="max-w-3xl mx-auto mt-48 text-gray-500 text-lg"
-    >
+    <div id="container" class="max-w-3xl mx-auto mt-48 text-gray-500 text-lg">
       <textarea
         id="text-area"
         rows="10"
@@ -15,7 +12,7 @@ import Layout from "../layouts/Layout.astro";
         placeholder="Please enter your text here.."
         class="p-6 border border-gray-300 outline-none resize-none overflow-auto"
       ></textarea>
-      <div id="output-container" class="flex space-x-2"></div>
+      <div id="output-container" class="flex flex-col space-y-2"></div>
     </div>
   </main>
 </Layout>
