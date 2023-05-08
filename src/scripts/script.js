@@ -1,7 +1,7 @@
 "use strict";
 
 import { regexPatterns } from "./modules/regex-patterns.js";
-import { getTokens, Token } from "./modules/nlp-patterns.js";
+import { getAllPatterns } from "./modules/nlp-patterns.js";
 
 const outputContainer = document.querySelector("#output-container");
 const textArea = document.querySelector("#text-area");
@@ -25,83 +25,39 @@ textArea.addEventListener("keyup", (event) => {
 
     // Use lexical scoping to pass text to the inner body of the IIFE
     (async function handleText() {
-      const tokens = await getTokens(text);
-      console.log(tokens);
+      const textPatterns = await getAllPatterns(text);
 
-      let textTokensAsSentence = tokens.text.join(" ");
+      const arrayLength = textPatterns.text.length;
+      const keys = Object.keys(textPatterns);
+      const values = Object.values(textPatterns);
 
-      // Start with the synchronous operations and display the result as fast as possible
-      // Makes no sense start with the async requests and handle them when ready
+      const sentenceDiv = document.createElement("div");
+      sentenceDiv.classList.add(...sentenceDivClasses);
 
-      regexPatterns.forEach(
-        (regex) =>
-          (textTokensAsSentence = textTokensAsSentence.replaceAll(
-            regex.pattern,
-            `<span class=${regex.name} title=${regex.description}>$1</span>`
-          ))
-      );
+      // Create tuple (list) for each column of array values
 
-      console.log(textTokensAsSentence);
+      for (let idx = 0; idx < arrayLength; idx++) {
+        const tokenCol = [];
+
+        for (const key in keys) {
+          tokenCol.push(values[key][idx]);
+        }
+
+        let sentenceElementDiv = document.createElement("div");
+        sentenceElementDiv.classList.add(...sentenceElementDivClasses);
+        let textSpan = document.createElement("span");
+        let posSpan = document.createElement("span");
+        posSpan.classList.add(...posClasses);
+
+        textSpan.innerHTML = tokenCol[0];
+        posSpan.innerHTML = tokenCol[1];
+
+        sentenceElementDiv.append(textSpan);
+        sentenceElementDiv.append(posSpan);
+
+        sentenceDiv.append(sentenceElementDiv);
+      }
+      outputContainer.append(sentenceDiv);
     })();
   }
 });
-
-//     getTextPosList(text).then((data) => {
-//       // Tag any regular expression to the original full sentence
-//       text = data.text.join(" ");
-
-//       regexPatterns.forEach(
-//         (regex) =>
-//           (text = text.replaceAll(
-//             regex.pattern,
-//             `<span class=${regex.name} title=${regex.description}>$1</span>`
-//           ))
-//       );
-
-//       // The regEx needs further improvement, add the NLP Patterns and then CLEAN THIS CODE please, modules :)
-//       text = text.split(/(\s+|<span.+?<\/span>)/);
-//       text = text.filter((str) => str != "" && str != " ");
-
-//       console.log(text, typeof text);
-
-//       // Zip text and POS to visually display them on top of each other
-//       const textPos = text.map(function (value, idx) {
-//         return [value, data.pos[idx]];
-//       });
-
-//       const sentenceDiv = document.createElement("div");
-//       sentenceDiv.classList.add(...sentenceDivClasses);
-
-//       textPos.forEach((element) => {
-//         let sentenceElementDiv = document.createElement("div");
-//         sentenceElementDiv.classList.add(...sentenceElementDivClasses);
-
-//         let textSpan = document.createElement("span");
-//         let posSpan = document.createElement("span");
-//         posSpan.classList.add(...posClasses);
-
-//         textSpan.innerHTML = element[0];
-//         posSpan.innerHTML = element[1];
-//         sentenceElementDiv.append(textSpan);
-//         sentenceElementDiv.append(posSpan);
-//         sentenceDiv.append(sentenceElementDiv);
-//       });
-
-//       outputContainer.append(sentenceDiv);
-//     });
-//   }
-// });
-
-// regexPatterns.forEach(
-//   (regex) =>
-//     (text = text.replaceAll(
-//       regex.pattern,
-//       `<span class=${regex.name} title=${regex.description}>$1</span>`
-//     ))
-// );
-
-// newParagraph.innerHTML = text;
-
-// lyAdverbs(text).then((data) => {
-//   newParagraph.innerHTML = data;
-// });
