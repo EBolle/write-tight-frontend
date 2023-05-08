@@ -1,5 +1,12 @@
 "use strict;";
 
+const getTokens = async function (text) {
+  const response = await fetch(`http://localhost:8000/pos/all/${text}`);
+  const data = await response.json();
+
+  return data;
+};
+
 async function getTextPosList(text) {
   const response = await fetch(`http://localhost:8000/pos/all/${text}`);
   const data = await response.json();
@@ -37,4 +44,4 @@ async function lyAdverbs(text) {
 
 const nlpPatterns = [lyAdverbs];
 
-export { getTextPosList, lyAdverbs, nlpPatterns };
+export { getTokens, getTextPosList, lyAdverbs, nlpPatterns };
