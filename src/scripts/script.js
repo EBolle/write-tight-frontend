@@ -27,37 +27,51 @@ textArea.addEventListener("keyup", (event) => {
     (async function handleText() {
       const textPatterns = await getAllPatterns(text);
 
-      const arrayLength = textPatterns.text.length;
-      const keys = Object.keys(textPatterns);
-      const values = Object.values(textPatterns);
-
-      const sentenceDiv = document.createElement("div");
-      sentenceDiv.classList.add(...sentenceDivClasses);
-
-      // Create tuple (list) for each column of array values
+      // Convert object of objects to objects of arrays and loop over the arrays and values to render the text, pos, and span titles.
+      const textPatternsArrays = Object.values(textPatterns);
+      const arrayLength = textPatternsArrays[0].length;
 
       for (let idx = 0; idx < arrayLength; idx++) {
-        const tokenCol = [];
+        const tokenPlaceholder = [];
 
-        for (const key in keys) {
-          tokenCol.push(values[key][idx]);
+        for (const key in textPatternsArrays) {
+          tokenPlaceholder.push(textPatternsArrays[key][idx]);
         }
-
-        let sentenceElementDiv = document.createElement("div");
-        sentenceElementDiv.classList.add(...sentenceElementDivClasses);
-        let textSpan = document.createElement("span");
-        let posSpan = document.createElement("span");
-        posSpan.classList.add(...posClasses);
-
-        textSpan.innerHTML = tokenCol[0];
-        posSpan.innerHTML = tokenCol[1];
-
-        sentenceElementDiv.append(textSpan);
-        sentenceElementDiv.append(posSpan);
-
-        sentenceDiv.append(sentenceElementDiv);
+        console.log(tokenPlaceholder);
+        // renderToken -> create new function in render.js
       }
-      outputContainer.append(sentenceDiv);
+
+      // const arrayLength = textPatterns.text.length;
+      // const keys = Object.keys(textPatterns);
+      // const values = Object.values(textPatterns);
+
+      // const sentenceDiv = document.createElement("div");
+      // sentenceDiv.classList.add(...sentenceDivClasses);
+
+      // // Create tuple (list) for each column of array values
+
+      // for (let idx = 0; idx < arrayLength; idx++) {
+      //   const tokenCol = [];
+
+      //   for (const key in keys) {
+      //     tokenCol.push(values[key][idx]);
+      //   }
+
+      //   let sentenceElementDiv = document.createElement("div");
+      //   sentenceElementDiv.classList.add(...sentenceElementDivClasses);
+      //   let textSpan = document.createElement("span");
+      //   let posSpan = document.createElement("span");
+      //   posSpan.classList.add(...posClasses);
+
+      //   textSpan.innerHTML = tokenCol[0];
+      //   posSpan.innerHTML = tokenCol[1];
+
+      //   sentenceElementDiv.append(textSpan);
+      //   sentenceElementDiv.append(posSpan);
+
+      //   sentenceDiv.append(sentenceElementDiv);
+      // }
+      // outputContainer.append(sentenceDiv);
     })();
   }
 });
