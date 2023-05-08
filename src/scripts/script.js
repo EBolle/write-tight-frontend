@@ -1,17 +1,10 @@
 "use strict";
 
-import { regexPatterns } from "./modules/regex-patterns.js";
-import { getAllPatterns } from "./modules/nlp-patterns.js";
+import { getAllPatterns, renderTokens } from "./modules/pattern-utils.js";
 
 const outputContainer = document.querySelector("#output-container");
 const textArea = document.querySelector("#text-area");
-
-// The analyzed text and POS tags are inserted live in the document
-// To avoid code clutter the (tailwindCSS) CSS classes are defined here
-
 const sentenceDivClasses = ["flex", "space-x-1"];
-const sentenceElementDivClasses = ["flex", "flex-col", "space-y-1"];
-const posClasses = ["text-base", "text-orange-500"];
 
 // ** MAIN **
 
@@ -31,47 +24,21 @@ textArea.addEventListener("keyup", (event) => {
       const textPatternsArrays = Object.values(textPatterns);
       const arrayLength = textPatternsArrays[0].length;
 
+      // Prepare the HTML element which is appended to the outputContainer
+      const sentenceDiv = document.createElement("div");
+      sentenceDiv.classList.add(...sentenceDivClasses);
+
       for (let idx = 0; idx < arrayLength; idx++) {
         const tokenPlaceholder = [];
 
         for (const key in textPatternsArrays) {
           tokenPlaceholder.push(textPatternsArrays[key][idx]);
         }
-        console.log(tokenPlaceholder);
-        // renderToken -> create new function in render.js
+
+        sentenceDiv.append(renderTokens(tokenPlaceholder));
       }
 
-      // const arrayLength = textPatterns.text.length;
-      // const keys = Object.keys(textPatterns);
-      // const values = Object.values(textPatterns);
-
-      // const sentenceDiv = document.createElement("div");
-      // sentenceDiv.classList.add(...sentenceDivClasses);
-
-      // // Create tuple (list) for each column of array values
-
-      // for (let idx = 0; idx < arrayLength; idx++) {
-      //   const tokenCol = [];
-
-      //   for (const key in keys) {
-      //     tokenCol.push(values[key][idx]);
-      //   }
-
-      //   let sentenceElementDiv = document.createElement("div");
-      //   sentenceElementDiv.classList.add(...sentenceElementDivClasses);
-      //   let textSpan = document.createElement("span");
-      //   let posSpan = document.createElement("span");
-      //   posSpan.classList.add(...posClasses);
-
-      //   textSpan.innerHTML = tokenCol[0];
-      //   posSpan.innerHTML = tokenCol[1];
-
-      //   sentenceElementDiv.append(textSpan);
-      //   sentenceElementDiv.append(posSpan);
-
-      //   sentenceDiv.append(sentenceElementDiv);
-      // }
-      // outputContainer.append(sentenceDiv);
+      outputContainer.append(sentenceDiv);
     })();
   }
 });
