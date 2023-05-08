@@ -1,5 +1,14 @@
 "use strict;";
 
+class Token {
+  constructor(text, pos, span, title) {
+    this.text = text;
+    this.pos = pos;
+    this.span = span;
+    this.title = title;
+  }
+}
+
 const getTokens = async function (text) {
   const response = await fetch(`http://localhost:8000/pos/all/${text}`);
   const data = await response.json();
@@ -44,4 +53,4 @@ async function lyAdverbs(text) {
 
 const nlpPatterns = [lyAdverbs];
 
-export { getTokens, getTextPosList, lyAdverbs, nlpPatterns };
+export { getTokens, Token };

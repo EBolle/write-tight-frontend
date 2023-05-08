@@ -1,7 +1,7 @@
 "use strict";
 
 import { regexPatterns } from "./modules/regex-patterns.js";
-import { getTokens } from "./modules/nlp-patterns.js";
+import { getTokens, Token } from "./modules/nlp-patterns.js";
 
 const outputContainer = document.querySelector("#output-container");
 const textArea = document.querySelector("#text-area");
@@ -25,8 +25,9 @@ textArea.addEventListener("keyup", (event) => {
 
     // Use lexical scoping to pass text to the inner body of the IIFE
     (async function handleText() {
-      // Wait for the tokens since they are input for further synchronous and asynchronous operations
       const tokens = await getTokens(text);
+      console.log(tokens);
+
       let textTokensAsSentence = tokens.text.join(" ");
 
       // Start with the synchronous operations and display the result as fast as possible
