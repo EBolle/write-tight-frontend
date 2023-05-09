@@ -2,6 +2,8 @@
 
 import { getAllPatterns, renderTokens } from "./modules/pattern-utils.js";
 
+const posButton = document.querySelector("#posButton");
+const posExplanation = document.querySelector("#posExplanation");
 const outputContainer = document.querySelector("#output-container");
 const textArea = document.querySelector("#text-area");
 const sentenceDivClasses = ["flex", "flex-row", "flex-wrap", "space-x-1"];
@@ -41,4 +43,8 @@ textArea.addEventListener("keyup", (event) => {
       outputContainer.append(sentenceDiv);
     })();
   }
+});
+
+posButton.addEventListener("click", (event) => {
+  posExplanation.classList.toggle("opacity-0");
 });
