@@ -3,6 +3,7 @@ import { Icon } from "astro-icon";
 
 import Layout from "../layouts/Layout.astro";
 import Pos from "../components/Pos.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Welcome to write-tight">
@@ -31,11 +32,10 @@ import Pos from "../components/Pos.astro";
           </h1>
         </div>
         <p>
-          The goal of write-tight is to improve your (business) writing so you
-          can say exactly what you want with precision and power. Write-tight
-          analyzes patterns in your text which are based on writing rules from
-          books and courses on professional (business) writing. These rules are
-          expressed with spaCy rule-based matching.
+          The goal of write-tight is to improve your writing so you can say
+          exactly what you want with precision and power. Write-tight analyzes
+          writing patterns which are based on books and courses on professional
+          writing. These rules are expressed with spaCy rule-based matching.
         </p>
         <p>
           To deepen the understanding of your writing patterns the Part of
@@ -50,10 +50,15 @@ import Pos from "../components/Pos.astro";
           placeholder="Please enter your text here.."
           class="text-lg text-gray-500 p-6 border-2 border-orange-300 outline-none resize-none overflow-auto"
         ></textarea>
-        <div id="output-container" class="flex flex-col space-y-2"></div>
+        <div
+          id="output-container"
+          class="flex flex-col space-y-2 text-lg text-gray-600"
+        >
+        </div>
       </div>
     </div>
   </main>
+  <Footer />
 </Layout>
 
 <script src="../scripts/script.js"></script>
