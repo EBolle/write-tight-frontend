@@ -1,63 +1,46 @@
 ---
-import { Icon } from "astro-icon";
-
 import Layout from "../layouts/Layout.astro";
+import Welcome from "../components/Welcome.astro";
 import Pos from "../components/Pos.astro";
 import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Welcome to write-tight">
   <main>
-    <div class="flex flex-col max-w-4xl mx-auto">
-      <div class="flex flex-col space-y-2 pt-4 pb-8 text-lg text-gray-600">
-        <div class="flex space-x-2 items-end">
-          <span>
-            <Icon name="pencil" class="w-16 text-orange-500" />
-          </span>
-          <h1 class="text-4xl text-gray-500 font-medium">
-            Welcome to write-tight!
-          </h1>
-        </div>
-        <p>
-          The goal of write-tight is to improve your writing so you can say
-          exactly what you want with precision and power. Write-tight analyzes
-          writing patterns which are based on books and courses on professional
-          writing. These rules are expressed with spaCy rule-based matching.
-        </p>
-        <p>
-          To deepen the understanding of your writing patterns the Part of
-          Speech tags are also shown.
-        </p>
+    <div class="flex flex-col max-w-5xl mx-auto">
+      <div class="flex flex-row space-x-2">
+        <Welcome />
+        <div></div>
       </div>
-      <div>
-        <textarea
-          id="text-area"
-          rows="5"
-          cols="60"
-          placeholder="Please enter your text here.."
-          class="text-lg text-gray-500 p-6 border-2 border-orange-300 outline-none resize-none overflow-auto"
-        ></textarea>
-      </div>
-      <div class="flex flex-row space-x-16">
-        <div
-          id="output-container"
-          class="flex flex-col basis-3/4 space-y-2 text-lg text-gray-600"
-        >
+      <div class="flex flex-row space-x-2 items-end">
+        <div class="flex flex-col mb-auto">
+          <textarea
+            id="text-area"
+            rows="5"
+            cols="55"
+            placeholder="Please enter your text here.."
+            class="text-lg text-gray-500 p-6 border-2 border-orange-300 outline-none resize-none overflow-auto"
+          ></textarea>
+          <div
+            id="output-container"
+            class="flex flex-col space-y-2 text-lg text-gray-600"
+          >
+          </div>
         </div>
-        <div class="basis-1/4">
-          <h2 class="text-lg text-orange-500 font-medium mb-4">
-            Part of Speech explanations (<a
-              class="text-blue-500 underline px-1"
-              href="https://universaldependencies.org/u/pos/"
-              target="_blank">source</a
-            >)
-          </h2>
-          <Pos />
+        <div class="flex flex-col">
+          <div class="my-16">
+            <h2 class="text-lg text-orange-500 font-medium">
+              Part of Speech explanations
+            </h2>
+          </div>
+          <div>
+            <Pos />
+          </div>
         </div>
       </div>
     </div>
+    <Footer />
   </main>
-  <Footer />
-</Layout>
 
-<script src="../scripts/script.js"></script>
+  <script src="../scripts/script.js"></script>
+</Layout>
