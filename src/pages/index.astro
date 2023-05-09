@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon";
+
 import Layout from "../layouts/Layout.astro";
 import Pos from "../components/Pos.astro";
 ---
@@ -7,13 +9,18 @@ import Pos from "../components/Pos.astro";
   <main>
     <div
       id="container"
-      class="container mx-auto px-24 mt-8 text-gray-500 text-lg"
+      class="container mx-auto px-16 mt-8 text-gray-500 text-lg"
     >
       <div class="flex flex-col">
-        <div class="flex flex-col space-y-2 py-6 max-w-3xl">
-          <h1 class="text-4xl text-gray-500 font-medium">
-            Welcome to write-tight!
-          </h1>
+        <div class="flex flex-col space-y-2 pt-4 pb-8 max-w-4xl">
+          <div class="flex space-x-2 items-end">
+            <span>
+              <Icon name="pencil" class="w-16 text-orange-500" />
+            </span>
+            <h1 class="text-4xl text-gray-500 font-medium">
+              Welcome to write-tight!
+            </h1>
+          </div>
           <p>
             The goal of write-tight is to improve your (business) writing so you
             can say exactly what you want with precision and power. Write-tight
@@ -22,7 +29,7 @@ import Pos from "../components/Pos.astro";
             are expressed with spaCy rule-based matching.
           </p>
           <p>
-            To deepen the understanding of your own writing patterns the Part of
+            To deepen the understanding of your writing patterns the Part of
             Speech tags are also shown.
           </p>
         </div>
