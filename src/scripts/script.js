@@ -46,5 +46,5 @@ textArea.addEventListener("keyup", (event) => {
 });
 
 posButton.addEventListener("click", (event) => {
-  posExplanation.classList.toggle("opacity-0");
+  posExplanation.classList.toggle("hidden");
 });
