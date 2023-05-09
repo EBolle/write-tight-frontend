@@ -12,7 +12,7 @@ const sentenceDivClasses = ["flex", "space-x-1"];
 const cursorIdxArray = [0];
 
 textArea.addEventListener("keyup", (event) => {
-  if (event.code === "Period" || event.key === "?" || event.key === "!") {
+  if (event.key === "." || event.key === "?" || event.key === "!") {
     cursorIdxArray.push(textArea.selectionStart);
     let text = textArea.value.slice(cursorIdxArray.at(-2));
 
