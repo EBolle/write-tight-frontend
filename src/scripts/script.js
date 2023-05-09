@@ -4,7 +4,7 @@ import { getAllPatterns, renderTokens } from "./modules/pattern-utils.js";
 
 const outputContainer = document.querySelector("#output-container");
 const textArea = document.querySelector("#text-area");
-const sentenceDivClasses = ["flex", "space-x-1"];
+const sentenceDivClasses = ["flex", "flex-row", "flex-wrap", "space-x-1"];
 
 // ** MAIN **
 

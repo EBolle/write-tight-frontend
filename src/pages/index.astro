@@ -7,19 +7,6 @@ import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Welcome to write-tight">
-  <!-- <aside class="float-right">
-    <div class="ml-8 mr-12 w-96 mt-56">
-      <h2 class="text-lg text-orange-500 font-medium mb-4">
-        Part of Speech explanations (<a
-          class="text-blue-500 underline px-1"
-          href="https://universaldependencies.org/u/pos/"
-          target="_blank">source</a
-        >)
-      </h2>
-      <Pos />
-    </div>
-  </aside> -->
-
   <main>
     <div class="flex flex-col max-w-4xl mx-auto">
       <div class="flex flex-col space-y-2 pt-4 pb-8 text-lg text-gray-600">
@@ -50,10 +37,22 @@ import Footer from "../components/Footer.astro";
           placeholder="Please enter your text here.."
           class="text-lg text-gray-500 p-6 border-2 border-orange-300 outline-none resize-none overflow-auto"
         ></textarea>
+      </div>
+      <div class="flex flex-row space-x-16">
         <div
           id="output-container"
-          class="flex flex-col space-y-2 text-lg text-gray-600"
+          class="flex flex-col basis-3/4 space-y-2 text-lg text-gray-600"
         >
+        </div>
+        <div class="basis-1/4">
+          <h2 class="text-lg text-orange-500 font-medium mb-4">
+            Part of Speech explanations (<a
+              class="text-blue-500 underline px-1"
+              href="https://universaldependencies.org/u/pos/"
+              target="_blank">source</a
+            >)
+          </h2>
+          <Pos />
         </div>
       </div>
     </div>
