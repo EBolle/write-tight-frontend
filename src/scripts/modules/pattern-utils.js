@@ -11,9 +11,7 @@ const getAllPatterns = async function (text) {
       const data = await response.json();
       return data;
     } else {
-      throw new Error(
-        `Something went wrong fetching data from patterns/all: ${error}`
-      );
+      throw new Error(`Something went wrong fetching data from patterns/all!`);
     }
   } catch (error) {
     console.error(error);
