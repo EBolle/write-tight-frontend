@@ -18,7 +18,7 @@ const getAllPatterns = async function (text) {
   }
 };
 
-const renderTokens = function (tokenPlaceholder) {
+const renderTokens = function (token) {
   let sentenceElementDiv = document.createElement("div");
   sentenceElementDiv.classList.add(...sentenceElementDivClasses);
 
@@ -26,9 +26,9 @@ const renderTokens = function (tokenPlaceholder) {
   let posSpan = document.createElement("span");
   posSpan.classList.add(...posClasses);
 
-  textSpan.innerHTML = tokenPlaceholder[0];
-  textSpan.title = tokenPlaceholder[3];
-  posSpan.innerHTML = tokenPlaceholder[1];
+  textSpan.innerHTML = token.text;
+  textSpan.title = token.description;
+  posSpan.innerHTML = token.pos;
 
   sentenceElementDiv.append(textSpan);
   sentenceElementDiv.append(posSpan);
